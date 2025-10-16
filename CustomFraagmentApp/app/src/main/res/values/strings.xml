@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CustomFraagmentApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment_1">Option1</string>
+    <string name="hello_blank_fragment_2">Option2</string>
+    <string name="hello_blank_fragment_3">Option3</string>
+</resources>
