@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="objedn_vky">Objednávky</string>
+    <string name="obl_ben">Oblíbené</string>
+    <string name="ko_k">Košík</string>
+    <string name="popul_rn_produkty">Populární produkty</string>
+    <string name="kategorie">Kategorie</string>
+    <string name="hledat">Hledat</string>
+    <string name="zp_t">Zpět</string>
+    <string name="obr">obrí</string>
+    <string name="mno_stv">Množství</string>
+    <string name="p_idat_do_ko_ku">Přidat do košíku</string>
+    <string name="popis">Popis</string>
+    <string name="p_ej_t_na_shrnut_objedn_vky">Přejít na shrnutí objednávky</string>
+    <string name="sestaven">Sestavená</string>
+    <string name="stavebnice">Stavebnice</string>
+    <string name="dom">Domů</string>
+    <string name="produkty">Produkty</string>
+</resources>

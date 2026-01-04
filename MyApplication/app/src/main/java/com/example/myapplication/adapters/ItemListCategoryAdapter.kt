@@ -1,0 +1,87 @@
+package com.example.myapplication.adapters
+
+import android.content.Context
+import android.content.Intent
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.myapplication.Helper.ManagmentCart
+import com.example.myapplication.Helper.ManagmentFavorite
+import com.example.myapplication.Helper.PriceFormatter
+import com.example.myapplication.R
+import com.example.myapplication.activities.DetailActivity
+import com.example.myapplication.databinding.ViewholderPopularBinding
+import com.example.myapplication.domain.ItemsModel
+
+class ItemListCategoryAdapter(val items: MutableList<ItemsModel>) :
+    RecyclerView.Adapter<ItemListCategoryAdapter.ViewHolder>() {
+
+    private lateinit var context: Context
+    private lateinit var managmentFavorite: ManagmentFavorite
+
+    inner class ViewHolder(val binding: ViewholderPopularBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
+        context = parent.context
+        managmentFavorite = ManagmentFavorite(context)
+        val binding =
+            ViewholderPopularBinding.inflate(LayoutInflater.from(context), parent, false)
+        return ViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = items[position]
+        val managmentCart = ManagmentCart(context)
+        
+        holder.binding.titleTxt.text = item.title
+        holder.binding.subtitleTxt.text = item.extra
+        
+        // OPRAVENO: Použití PriceFormatter
+        holder.binding.priceTxt.text = PriceFormatter.format(item.price)
+
+        if (item.picUrl.isNotEmpty()) {
+            Glide.with(holder.itemView.context)
+                .load(item.picUrl[0])
+                .into(holder.binding.pic)
+        } else {
+            holder.binding.pic.setImageResource(R.drawable.orange_2_semi_corner)
+        }
+
+        if (managmentFavorite.isFavorite(item)) {
+            holder.binding.favBtn.setImageResource(R.drawable.ic_heart_full)
+            holder.binding.favBtn.setColorFilter(context.getColor(R.color.orange))
+        } else {
+            holder.binding.favBtn.setImageResource(R.drawable.ic_heart_outline)
+            holder.binding.favBtn.setColorFilter(context.getColor(R.color.orange))
+        }
+
+        holder.binding.favBtn.setOnClickListener {
+            managmentFavorite.insertItem(item)
+            notifyItemChanged(position)
+        }
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("object", item)
+            context.startActivity(intent)
+        }
+
+        holder.binding.imageView5.setOnClickListener {
+            if (item.categoryId == "0") {
+                val intent = Intent(context, DetailActivity::class.java)
+                intent.putExtra("object", item)
+                context.startActivity(intent)
+            } else {
+                item.numberInCart = 1
+                managmentCart.insertItems(item)
+            }
+        }
+    }
+
+    override fun getItemCount(): Int = items.size
+}

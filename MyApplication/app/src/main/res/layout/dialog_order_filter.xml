@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/darkgrey"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Řadit podle"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/rgSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/rbNewest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nejnovější"
+            android:textColor="@color/white"
+            android:buttonTint="@color/orange" />
+
+        <RadioButton
+            android:id="@+id/rbOldest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nejstarší"
+            android:textColor="@color/white"
+            android:buttonTint="@color/orange" />
+
+        <RadioButton
+            android:id="@+id/rbPriceHigh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nejdražší"
+            android:textColor="@color/white"
+            android:buttonTint="@color/orange" />
+
+        <RadioButton
+            android:id="@+id/rbPriceLow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nejlevnější"
+            android:textColor="@color/white"
+            android:buttonTint="@color/orange" />
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginVertical="16dp"
+        android:background="#4A4A4A" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zobrazit statusy"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:id="@+id/cbOdeslana"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Odeslána"
+        android:textColor="@color/white"
+        android:buttonTint="@color/orange" />
+
+    <CheckBox
+        android:id="@+id/cbDokoncena"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dokončena"
+        android:textColor="@color/white"
+        android:buttonTint="#4CAF50" />
+
+    <CheckBox
+        android:id="@+id/cbZrusena"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Zrušena"
+        android:textColor="@color/white"
+        android:buttonTint="#F44336" />
+
+</LinearLayout>

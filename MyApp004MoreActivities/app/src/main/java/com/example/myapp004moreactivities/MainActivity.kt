@@ -2,28 +2,29 @@ package com.example.myapp004moreactivities
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.myapp004moreactivities.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setContentView(R.layout.activity_main)
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.title = "Hlavní Aktivita"
 
-        val btnSecondAct = findViewById<Button>(R.id.btnSecondAct)
-        val etNickname = findViewById<EditText>(R.id.etNickname)
-
-        btnSecondAct.setOnClickListener {
-            val nickname = etNickname.text.toString()
-            val intent = Intent(this, SecondActivity::class.java )
+        binding.btnSecondAct.setOnClickListener {
+            val nickname = binding.etNickname.text.toString()
+            val age = binding.etAge.text.toString()
+            
+            val intent = Intent(this, SecondActivity::class.java)
             intent.putExtra("NICK_NAME", nickname)
+            intent.putExtra("AGE", age)
             startActivity(intent)
         }
-
     }
 }

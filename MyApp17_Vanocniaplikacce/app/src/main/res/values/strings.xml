@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Vánoční Nadílka</string>
+    <string name="navigation_drawer_open">Otevřít menu</string>
+    <string name="navigation_drawer_close">Zavřít menu</string>
+    <string name="nav_header_title">Moje Vánoce</string>
+    <string name="nav_header_subtitle">Co najdeš pod stromečkem?</string>
+    <string name="nav_header_desc">Vánoční navigace</string>
+    <string name="action_settings">Nastavení</string>
+
+    <string name="menu_home">Stromeček</string>
+    <string name="menu_gallery">Moje dárky</string>
+    <string name="menu_slideshow">Seznam možných dárků</string>
+</resources>

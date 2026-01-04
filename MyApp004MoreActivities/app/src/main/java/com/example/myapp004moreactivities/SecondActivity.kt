@@ -1,28 +1,42 @@
 package com.example.myapp004moreactivities
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.myapp004moreactivities.databinding.ActivitySecondBinding
 
 class SecondActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySecondBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivitySecondBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setContentView(R.layout.activity_second)
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.title = "Druhá Aktivita"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val twInfo = findViewById<TextView>(R.id.twInfo)
-
-        //Načtení daz intentu
+        // Načtení dat z intentu
         val nickname = intent.getStringExtra("NICK_NAME")
-        twInfo.text = "Data z první aktivity. Přezdívka: $nickname"
+        val age = intent.getStringExtra("AGE")
+        binding.twInfo.text = "Přezdívka: $nickname, Věk: $age"
 
-        val btnClose = findViewById<Button>(R.id.btnClose)
-        btnClose.setOnClickListener {
+        binding.btnClose.setOnClickListener {
             finish()
         }
+
+        binding.btnThirdAct.setOnClickListener {
+            val location = binding.etlocation.text.toString()
+            val intent = Intent(this, ThirdActivity::class.java)
+            intent.putExtra("location", location)
+            startActivity(intent)
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }
